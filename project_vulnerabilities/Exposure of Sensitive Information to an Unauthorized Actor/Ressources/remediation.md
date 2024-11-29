@@ -1,3 +1,5 @@
+# Remediation for Exposure of Sensitive Information to an Unauthorized Actor
+
 To mitigate this vulnerability, follow these best practices:
 
 1. **Restrict Access to Sensitive Files**:
