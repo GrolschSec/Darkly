@@ -24,13 +24,16 @@ Further enumeration using gobuster revealed the /admin directory. Attempting to 
 ```bash
 gobuster dir -u http://darkly/ -w /path/to/wordlist
 ```
+
 2. Analyze Sensitive Files:
 - Access `.htpasswd` and extract the username and hashed password.
+
 3. Crack the Hash:
 - Use a tool like hash-identifier to determine the hash type.
 - Crack the hash using tools like CrackStation:
 ```bash
 echo -n "d42f2da1df5ecdf29be4ac27edda0c12" | crackstation
 ```
+
 4. Access Restricted Functionality:
 - Use the credentials `root:qwerty123@` to log in to the /admin section.

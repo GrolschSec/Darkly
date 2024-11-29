@@ -44,6 +44,7 @@ This reveals all users, including one named Flag with the last name GetThe. Furt
 ```sql
 1 UNION SELECT Commentaire,countersign FROM users WHERE first_name = 0x466c6167 --
 ```
+
 4. Crack the Hash:
 - Use CrackStation to decode the MD5 hash in the countersign column.
 - Hash the resulting string (fortytwo) with SHA-256 to retrieve the flag:

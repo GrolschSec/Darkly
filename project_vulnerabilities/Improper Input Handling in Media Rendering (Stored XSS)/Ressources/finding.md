@@ -14,12 +14,14 @@ http://darkly/index.php?page=media&src=nsa
 The `src` parameter specifies the source of the media to render. By default, it loads an image, but it was discovered that the application fails to validate or sanitize the `src` parameter, making it vulnerable to injection.
 
 ### Steps to Exploit:
+
 1. Inspect the Default Behavior:
 - Navigate to the media page:
 ```plaintext
 http://darkly/index.php?page=media&src=nsa
 ```
 - Observe that the `src` parameter loads an image from the specified source.
+
 2. Inject a Malicious Payload:
 - Replace the src parameter with a Base64-encoded payload to execute arbitrary JavaScript:
 ```plaintext
@@ -31,6 +33,7 @@ http://darkly/index.php?page=media&src=data:text/html;base64,PHNjcmlwdD5hbGVydCg
 ```
 
 ### Observed Impact:
+
 This vulnerability allows attackers to inject and execute arbitrary JavaScript via the src parameter. This can be exploited for:
 - Unauthorized data access.
 - Session hijacking.

