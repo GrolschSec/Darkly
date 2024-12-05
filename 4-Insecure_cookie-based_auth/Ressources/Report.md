@@ -22,7 +22,7 @@ echo -n "true" | md5sum
 3. Replace the cookie with the true value.
 4. Forward the request.
 5. The flag shows up on the page: 
-![Flag]()
+![Flag](img/image.png)
 
 ### Impact
 Attackers can exploit this flaw to gain unauthorized administrative access making expanding them the attack surface.
