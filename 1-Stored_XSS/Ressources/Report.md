@@ -20,7 +20,7 @@ The application does not properly sanitize input submitted through the name fiel
 2. Enter `script` in the `Name` field.
 3. Send the form.
 3. The flag shows up on the page: 
-![Flag](imgs/flag.png)
+![Flag](img/flag.png)
 
 ### Impact
 The impact for this vulnerability is high, it allows attackers to execute arbitrary JavaScript code in the browsers of all users visiting the page. It can lead to serious issues such as session hijacking.
