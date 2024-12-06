@@ -19,11 +19,31 @@ The login page of the application does not impose limits on authentication attem
 1. Navigate to the login page http://darkly/index.php?page=signin.
 2. Attempt multiple incorrect logins in quick succession.
 3. Observe that no lockout or delay is enforced after multiple failed attempts.
-4. Use a brute-force tool (e.g., `brute.py`) to automate credential guessing:
-```bash
-python3 utils/brute.py <Darkly IP> <Path to Wordlist>
-```
-5. Once the script identifies a valid password, use it to log in and gain unauthorized access.
+4. Download the rockyou wordlist:
+	```bash
+	wget -O utils/rockyou.txt https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Leaked-Databases/rockyou-75.txt
+	```
+5. Navigate to the utils dir.
+6. Create a python virtual environment:
+	```bash
+	python3 -m venv .env
+	```
+7. Activate the environment:
+	```bash
+	source .env/bin/activate
+	```
+8. Install the dependencies:
+	```bash
+	pip3 install -r requirements.txt
+	```
+9. Use the brute-force tool (e.g., `brute.py`) to automate credential guessing:
+	```bash
+	python3 brute.py <Darkly IP> <Path to Wordlist>
+	```
+10. The script identifies the password `shadow` as valid.
+11. Connect using the login `admin:shadow`
+12. The flag is on the page.
+
 
 ### Observed Impact
 
@@ -33,11 +53,5 @@ This vulnerability allows an attacker to:
 
 ## Mitigation
 
-1. **Implement Rate Limiting**:
-   - Introduce delays between failed login attempts to slow down brute-force attacks.
-   - Example in PHP:
-    ```php
-    sleep(5); // Delay for 5 seconds after a failed login attempt
-    ```
-2. **Implement Multi-Factor Authentication (MFA)**:
-    - Require an additional layer of authentication (e.g., a code sent to the user’s email or phone).
+1. Implement throttling on the page.
+2. Lockout the account after too many failed attempt.
