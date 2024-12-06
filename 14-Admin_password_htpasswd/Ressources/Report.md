@@ -51,7 +51,7 @@ This vulnerability allows attackers to:
      Options -Indexes
      ```
 
-3. **Use Secure Cryptographic Algorithms**:
+2. **Use Secure Cryptographic Algorithms**:
    - Replace MD5 with secure hashing algorithms such as `bcrypt` or `Argon2` for password storage.
    - Example in PHP:
      ```php
