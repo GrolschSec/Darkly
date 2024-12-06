@@ -46,9 +46,22 @@ This vulnerability allows attackers to:
 
 1. **Disable Directory Listing**:
    - Prevent the web server from exposing directory contents.
-   - Example for Apache:
+   - Example for Nginx:
      ```
-     Options -Indexes
+      server {
+         listen 80;
+         server_name example.com;
+
+         root /var/www/html;
+
+         location / {
+            autoindex off;
+         }
+
+         location /admin {
+            autoindex off;
+         }
+      }
      ```
 
 2. **Use Secure Cryptographic Algorithms**:
