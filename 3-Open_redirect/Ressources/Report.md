@@ -13,8 +13,7 @@ During testing of the website, an open redirect vulnerability was identified in 
 ### Steps to reproduce
 1. Navigate to the vulnerable [url](http://darkly/index.php?page=redirect&site=).
 2. Pass any domain to the site parameter.
-3. The flag shows up on the page: 
-![Flag](imgs/)
+3. The flag shows up on the page.
 
 ### Impact
 While this vulnerability does not directly impact the functionality of the web application, it could lead users to fall victim to phishing attacks, thereby damaging the company's reputation.

@@ -19,8 +19,7 @@ The application does not properly sanitize input submitted through the name fiel
 1. Navigate to [feedback](http://darkly/index.php?page=feedback) page.
 2. Enter `script` in the `Name` field.
 3. Send the form.
-3. The flag shows up on the page: 
-![Flag](img/flag.png)
+3. The flag shows up on the page.
 
 ### Impact
 The impact for this vulnerability is high, it allows attackers to execute arbitrary JavaScript code in the browsers of all users visiting the page. It can lead to serious issues such as session hijacking.

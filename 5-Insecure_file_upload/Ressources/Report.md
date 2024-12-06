@@ -18,8 +18,7 @@ The vulnerability occur because the file validation is checking only if the `Con
 4. Click `Upload`.
 5. In the Burp window modify the `Content-Type` header to `image/jpeg`.
 6. Forward the request.
-7. The Flag is showing up:
-![Flag](img/image.png)
+7. The Flag is showing up.
 ### Impact
 While in this case the vulnerability does not allow direct code execution due to the uploaded path (tmp), it could still be exploited to upload a webshell. Chaining this with another vulnerability, such as directory path traversal, could allow attackers to execute code on the server, leading to unauthorized access or complete server compromise.
 ## Mitigation

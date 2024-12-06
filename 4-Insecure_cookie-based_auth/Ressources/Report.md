@@ -13,16 +13,14 @@ During the enumeration phase, a cookie named `I_am_admin` was discovered, which 
 This vulnerability occurs when a web application uses cookies for critical security decisions, such as authentication or authorization, without verifying their validity or integrity. Attackers can manipulate cookies, either through browser developer tools or custom client-side scripts, to bypass security mechanisms.
 
 ### Steps to reproduce
-1. Intercept a request on the website using burp:
-![Burp]()
+1. Intercept a request on the website using burp.
 2. Get the value of the cookie to set it as true as follow:
 ```bash
 echo -n "true" | md5sum
 ```
 3. Replace the cookie with the true value.
 4. Forward the request.
-5. The flag shows up on the page: 
-![Flag](img/image.png)
+5. The flag shows up on the page.
 
 ### Impact
 Attackers can exploit this flaw to gain unauthorized administrative access making expanding them the attack surface.

@@ -29,8 +29,7 @@ To address this, we used wget to download all the files in bulk. This allowed us
     ```bash
     grep -v "Demande" content.txt | grep -v "Tu" | grep -v "Toujours" | grep -v "Non"
     ```
-5. The flag is in the output:
-![Flag](img/image.png)
+5. The flag is in the output.
 
 ### Impact
 Directory indexing enabled on the .hidden directory exposes sensitive files and subdirectories, allowing attackers to gather confidential information or metadata about the server structure. This significantly increases the attack surface and can lead to further exploitation.
