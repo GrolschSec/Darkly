@@ -8,7 +8,7 @@ An Insecure Input Validation vulnerability exists in the `Darkly` application. T
 
 ### CWE Reference
 
-- **CWE ID**: [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)
+- CWE ID: [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)
 
 ### Description
 
@@ -34,15 +34,14 @@ This vulnerability allows an attacker to:
 
 ## Mitigation
 
-1. **Implement Server-Side Validation**:
+1. Implement Server-Side Validation:
    - Validate all inputs server-side to ensure they conform to the expected range or format.
    - Example in PHP:
    ```php
    if ($valeur < 0 || $valeur > 10) { die("Invalid input."); }
    ```
 
-
-2. **Enforce Client-Side Validation**:
+2. Enforce Client-Side Validation:
    - Use client-side validation to provide immediate feedback to users. Example with JavaScript:
    ```php
    if (valeur < 0 || valeur > 10) { alert("Value must be between 0 and 10."); }

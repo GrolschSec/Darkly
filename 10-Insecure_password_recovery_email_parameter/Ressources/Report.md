@@ -8,7 +8,7 @@ A Weak Password Recovery Mechanism for Forgotten Password vulnerability exists i
 
 ### CWE Reference
 
-- **CWE ID**: [CWE-640: Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)
+- CWE ID: [CWE-640: Weak Password Recovery Mechanism for Forgotten Password](https://cwe.mitre.org/data/definitions/640.html)
 
 ### Description
 
@@ -17,8 +17,11 @@ The password recovery mechanism in the application is poorly implemented. During
 ### Steps to reproduce
 
 1. Access the password recovery page at http://darkly/index.php?page=recover.
+
 2. Click the `Submit` button and intercept the request using a proxy tool like Burp Suite.
+
 3. Modify the email address in the intercepted request to an attacker-controlled email.
+
 4. Submit the modified request.
 
 ### Observed Impact
@@ -29,7 +32,7 @@ This vulnerability allows an attacker to:
 
 ## Mitigation
 
-1. **Strict Identity Verification**:
+1. Strict Identity Verification:
    - Enforce secure identity verification during the password recovery process.
    - Example in PHP:
      ```php
@@ -39,7 +42,7 @@ This vulnerability allows an attacker to:
      ```
    - Use verified contact methods such as email or phone for recovery communications.
 
-2. **Implement Multi-Factor Authentication (MFA)**:
+2. Implement Multi-Factor Authentication (MFA):
    - Require MFA during the password recovery process for additional security.
    - Example: Send a one-time code via SMS or an authenticator app and validate it before completing the recovery.
 

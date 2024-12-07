@@ -8,7 +8,7 @@ A Directory Path Traversal vulnerability exists in the `Darkly` application. Thi
 
 ### CWE Reference
 
-- **CWE ID**: [CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)
+- CWE ID: [CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)
 
 ### Description
 
@@ -16,8 +16,10 @@ The application uses the `page` parameter to dynamically load different files on
 
 ### Steps to reproduce
 
-1. Navigate to the application URL with a valid page parameter, e.g.: http://darkly/?page=member
+1. Navigate to the application URL with a valid page parameter, e.g.: http://darkly/?page=member.
+
 2. Replace the `page` parameter value with a traversal payload such as: `../../../../../../../etc/passwd`.
+
 3. Submit the request. If successful, the application displays the contents of the targeted file (e.g., `/etc/passwd`).
 
 ### Observed Impact
@@ -28,7 +30,7 @@ This vulnerability allows an attacker to:
 
 ## Mitigation
 
-1. **Sanitize and Validate Input**:
+1. Sanitize and Validate Input:
 - Ensure user input does not contain patterns such as `../` or other path traversal sequences.
 - Example in PHP:
   ```php
@@ -37,7 +39,7 @@ This vulnerability allows an attacker to:
   }
   ```
 
-2.  **Restrict File Access**:
+2.  Restrict File Access:
 - Limit the server's file access to only necessary directories using operating system-level permissions.
 - Example for Linux:
   ```bash

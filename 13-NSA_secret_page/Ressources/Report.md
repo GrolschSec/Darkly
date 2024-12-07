@@ -12,7 +12,7 @@ The application uses HTTP headers such as `Referer` and `User-Agent` for access 
 
 ### Steps to reproduce
 
-1. **Inspect the Page Source**:
+1. Inspect the Page Source:
    - On the main page http://darkly/index.php, observe the following link in the HTML:
      ```html
      <ul class="copyright">
@@ -22,7 +22,7 @@ The application uses HTTP headers such as `Referer` and `User-Agent` for access 
      </ul>
      ```
 
-2. **Identify Header Dependency**:
+2. Identify Header Dependency:
    - In the source code of the linked page, observe comments indicating required values for the `Referer` and `User-Agent` headers:
      ```html
      <!--
@@ -35,7 +35,7 @@ The application uses HTTP headers such as `Referer` and `User-Agent` for access 
      -->
      ```
 
-3. **Modify HTTP Headers Using Burp Suite**:
+3. Modify HTTP Headers Using Burp Suite:
    - Open Burp Suite and configure it as your browser's proxy.
    - Navigate to the sensitive page in your browser to intercept the request in Burp Suite.
    - In the intercepted request:
@@ -43,7 +43,7 @@ The application uses HTTP headers such as `Referer` and `User-Agent` for access 
      - Modify the `User-Agent` header to `ft_bornToSec`.
    - Forward the modified request to the server.
 
-4. **Access the Sensitive Resource**:
+4. Access the Sensitive Resource:
    - Send the request with the forged headers to bypass the security mechanism and view the sensitive content.
 
 ### Observed Impact
